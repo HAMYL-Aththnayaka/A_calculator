@@ -63,7 +63,7 @@ class _MyHomePageState extends State<HomePage> {
                 }else if(index == 1){
                    return Mybutton(
                   buttonText:buttons[index],
-                  color:Colors.red,
+                  color:const Color.fromARGB(255, 105, 15, 9),
                   textColor:Colors.white,
                   );
                 }else{
