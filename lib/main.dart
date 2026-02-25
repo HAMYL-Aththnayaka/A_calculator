@@ -54,11 +54,25 @@ class _MyHomePageState extends State<HomePage> {
               itemCount:buttons.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:4),
               itemBuilder: (BuildContext context , int index){
-                return Mybutton(
+                if (index == 0){
+                  return Mybutton(
                   buttonText:buttons[index],
-                  color:Colors.deepPurple,
-                  textColor:Colors.white
+                  color:Colors.green,
+                  textColor:Colors.white,
                   );
+                }else if(index == 1){
+                   return Mybutton(
+                  buttonText:buttons[index],
+                  color:Colors.red,
+                  textColor:Colors.white,
+                  );
+                }else{
+                  return Mybutton(
+                  buttonText:buttons[index],
+                  color:isOperate(buttons[index])?Colors.deepPurple:Colors.deepPurple[50],
+                  textColor:isOperate(buttons[index]) ?Colors.white:Colors.deepPurple
+                  );
+                }
               }
               ),
              ),
@@ -67,5 +81,11 @@ class _MyHomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+  bool isOperate(String x){
+    if (x =="%" ||x =="/" ||x =="x" ||x =="*" ||x =="-" ||x =="+"|| x =="="  ){
+      return true;
+    }
+    return false;
   }
 }
