@@ -26,7 +26,9 @@ class _MyHomePageState extends State<HomePage> {
     "C","DEL","%","/",
     "9","8","7","x",
     "6","5","4","-",
-    "3","2","1","+"
+    "3","2","1","+",
+    "0",".","ANS","=",
+    
     
   ];
 
@@ -48,10 +50,16 @@ class _MyHomePageState extends State<HomePage> {
             flex:2,
             child: Container(
              child:Center(
-            child: Mybutton(
-              color:Colors.deepPurple,
-              textColor:Colors.white,
-              buttonText:"0",
+            child:GridView.builder(
+              itemCount:buttons.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:4),
+              itemBuilder: (BuildContext context , int index){
+                return Mybutton(
+                  buttonText:buttons[index],
+                  color:Colors.deepPurple,
+                  textColor:Colors.white
+                  );
+              }
               ),
              ),
             ),
