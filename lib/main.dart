@@ -1,3 +1,4 @@
+import 'package:calculator/buttons.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +21,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<HomePage> {
+
+  final List<String> buttons=[
+    "C","DEL","%","/",
+    "9","8","7","x",
+    "6","5","4","-",
+    "3","2","1","+"
+    
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +47,13 @@ class _MyHomePageState extends State<HomePage> {
           Expanded(
             flex:2,
             child: Container(
+             child:Center(
+            child: Mybutton(
               color:Colors.deepPurple,
+              textColor:Colors.white,
+              buttonText:"0",
+              ),
+             ),
             ),
           ),
         ],
