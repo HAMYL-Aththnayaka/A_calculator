@@ -121,6 +121,7 @@ void equalPressed() {
                         buttonTapped: () {
                           setState(() {
                             userQuestion = "";
+                            userAnswer = "";
                           });
                         },
                         buttonText: buttons[index],
