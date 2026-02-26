@@ -82,8 +82,19 @@ flutter run
 ---
 
 ## 📸 Screenshots
+<div className="flex flex-row items-center justify-center gap-4">
+  <img 
+    className="w-[300px] h-auto rounded-lg" 
+    alt="Screenshot 1" 
+    src="https://github.com/user-attachments/assets/b75387f3-5bf8-4eab-a6ef-09bbc947fd01" 
+  />
 
-(Add screenshots here if you want — highly recommended for GitHub 👀)
+  <img 
+    className="w-[300px] h-auto rounded-lg" 
+    alt="Screenshot 2" 
+    src="https://github.com/user-attachments/assets/8efeebb4-e1d3-4c03-a705-f822c382c7c6" 
+  />
+</div>
 
 ---
 
@@ -101,4 +112,5 @@ flutter run
 
 **Yasas Aththanayaka**
 BSc (Hons) IT Undergraduate
+
 
