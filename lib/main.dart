@@ -1,5 +1,6 @@
 import 'package:calculator/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<HomePage> {
+void equalPressed() {
+  try {
+    if (userQuestion.isEmpty) return;
+
+    String finalQuestion = userQuestion;
+
+    finalQuestion = finalQuestion.replaceAll("x","*");
+
+    ExpressionParser p = GrammarParser();
+    Expression exp = p.parse(finalQuestion);
+    ContextModel cm = ContextModel();
+    double eval = exp.evaluate(EvaluationType.REAL, cm);
+
+    setState(() {
+      userAnswer = eval % 1 == 0
+          ? eval.toInt().toString()
+          : eval.toString();
+    });
+  } catch (e) {
+    setState(() {
+      userAnswer = "Error";
+    });
+  }
+}
+
   var userQuestion = '';
   var userAnswer = "";
 
@@ -94,7 +120,7 @@ class _MyHomePageState extends State<HomePage> {
                       return Mybutton(
                         buttonTapped: () {
                           setState(() {
-                            userQuestion="";
+                            userQuestion = "";
                           });
                         },
                         buttonText: buttons[index],
@@ -107,11 +133,25 @@ class _MyHomePageState extends State<HomePage> {
                       return Mybutton(
                         buttonTapped: () {
                           setState(() {
-                            userQuestion =userQuestion.substring(0,userQuestion.length-1);
+                            userQuestion = userQuestion.substring(
+                              0,
+                              userQuestion.length - 1,
+                            );
                           });
                         },
                         buttonText: buttons[index],
                         color: const Color.fromARGB(255, 105, 15, 9),
+                        textColor: Colors.white,
+                      );
+
+                      //equal button
+                    } else if (index == buttons.length - 1) {
+                      return Mybutton(
+                        buttonTapped: () {
+                            equalPressed();
+                        },
+                        buttonText: buttons[index],
+                        color: Colors.deepPurple,
                         textColor: Colors.white,
                       );
 
@@ -154,4 +194,6 @@ class _MyHomePageState extends State<HomePage> {
     }
     return false;
   }
+
+
 }
